@@ -20,8 +20,6 @@ spec:
           image: mysql:latest
           command: ['bash', '-c', 'cp /mnt/init.sql /docker-entrypoint-initdb.d/init.sql']
           volumeMounts:
-            - name: mysqldata
-              mountPath: /var/lib/mysql
             - name: init-script
               mountPath: /mnt
       containers:
