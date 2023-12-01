@@ -20,7 +20,7 @@ spec:
           image: naveensmily79/two-tier-flask:v1
           env:
             - name: MYSQL_HOST
-              value: "mysql"          # this is your mysql's service clusture IP, Make sure to change it with yours
+              value: "10.100.236.187"          # this is your mysql's service clusture IP, Make sure to change it with yours
             - name: MYSQL_PASSWORD
               value: "admin"
             - name: MYSQL_USER
