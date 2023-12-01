@@ -15,16 +15,6 @@ spec:
       labels:
         app: mysql
     spec:
-      # initContainers:
-      #   - name: init-mysql
-      #     image: mysql:latest
-      #     env:
-      #       - name: MYSQL_ROOT_PASSWORD
-      #         value: "admin"          
-      #     # command: ['bash', '-c', 'cp /mnt/init.sql /docker-entrypoint-initdb.d/init.sql']
-      #     volumeMounts:
-      #       - name: init-script
-      #         mountPath: /docker-entrypoint-initdb.d
       containers:
         - name: mysql
           image: mysql:latest
@@ -40,6 +30,7 @@ spec:
           ports:
             - containerPort: 3306
           volumeMounts:
+          # This is Working fine without init container
             - name: init-script
               mountPath: /docker-entrypoint-initdb.d          
             - name: mysqldata
