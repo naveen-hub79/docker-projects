@@ -18,6 +18,9 @@ spec:
       initContainers:
         - name: init-mysql
           image: mysql:latest
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "admin"          
           # command: ['bash', '-c', 'cp /mnt/init.sql /docker-entrypoint-initdb.d/init.sql']
           volumeMounts:
             - name: init-script
