@@ -18,10 +18,10 @@ spec:
       initContainers:
         - name: init-mysql
           image: mysql:latest
-          command: ['bash', '-c', 'cp /mnt/init.sql /docker-entrypoint-initdb.d/init.sql']
+          # command: ['bash', '-c', 'cp /mnt/init.sql /docker-entrypoint-initdb.d/init.sql']
           volumeMounts:
             - name: init-script
-              mountPath: /mnt
+              mountPath: /docker-entrypoint-initdb.d
       containers:
         - name: mysql
           image: mysql:latest
