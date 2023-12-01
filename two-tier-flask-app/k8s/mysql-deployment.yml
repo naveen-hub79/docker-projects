@@ -15,6 +15,15 @@ spec:
       labels:
         app: mysql
     spec:
+      initContainers:
+        - name: init-mysql
+          image: mysql:latest
+          command: ['bash', '-c', 'cp /mnt/init.sql /var/lib/mysql/init.sql']
+          volumeMounts:
+            - name: mysqldata
+              mountPath: /var/lib/mysql
+            - name: init-script
+              mountPath: /mnt
       containers:
         - name: mysql
           image: mysql:latest
@@ -36,3 +45,6 @@ spec:
         - name: mysqldata
           persistentVolumeClaim:
             claimName: mysql-pvc    # PVC claim name
+        - name: init-script
+          configMap:
+            name: mysql-init-script
